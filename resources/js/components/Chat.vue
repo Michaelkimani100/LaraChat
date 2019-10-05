@@ -23,6 +23,7 @@
     export default {
         data(){
             return{
+                user:'',
                 message:'',
                 chat:{
                     message:[]
@@ -35,6 +36,10 @@
         mounted() {
             console.log('Component mounted.')
         },
+        created(){
+            this.getUser()
+
+        },
         methods:{
             save(){
                 if(this.message.length!=0)
@@ -44,6 +49,13 @@
 
                 }
 
+            },
+            getUser(){
+                this.axios.get('api/chat')
+                .then((response)=>{
+                    this.user=response.data
+
+                })
             }
         }
 

@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-
 use App\Events\ChatEvent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
-
+use Illuminate\Support\Facades\Auth;
 class ChatController extends Controller
 {
     /**
@@ -16,7 +15,9 @@ class ChatController extends Controller
      */
     public function index()
     {
-
+        $user=auth('api')->user();
+        $message='hello mike';
+        event(new ChatEvent($message,$user));
     }
 
     /**
@@ -63,9 +64,9 @@ class ChatController extends Controller
     {
         //
     }
-    public function send(Request $request){
-        $user=auth('api')->user();
-        $message=$request->input('message');
-        // event(new ChatEvent($message,$user));
-    }
+    // public function send(Request $request){
+    //     $user=auth('api')->user();
+    //     $message='hello';
+    //     event(new ChatEvent($message,$user));
+    // }
 }

@@ -8,9 +8,11 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 import Vue from 'vue'
-
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 import VueChatScroll from 'vue-chat-scroll'
 Vue.use(VueChatScroll)
+Vue.use(VueAxios, axios)
 
 
 
